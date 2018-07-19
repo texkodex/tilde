@@ -1,13 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
+  state = {
+    showButton: false,
+  }
+
+  toggleButton = () => {
+    console.log("button pressed")
+    this.setState(prevState => {showButton: !prevState.showButton})
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Button title="Submit" onPress={this.toggleButton} />
       </View>
     );
   }
@@ -16,7 +24,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ff0000',
     alignItems: 'center',
     justifyContent: 'center',
   },
